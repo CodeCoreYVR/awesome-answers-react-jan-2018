@@ -22,11 +22,19 @@ function QuestionDetails (props) {
       <h2>{props.title}</h2>
       <p>{props.body}</p>
       <p>By {author.full_name}</p>
-      <p><strong>View Count:</strong> {props.view_count}</p>
-      <p><strong>Created At:</strong> {props.created_at}</p>
-      <p><strong>Updated At:</strong> {props.updated_at}</p>
+      <Field name="View Count" value={props.view_count} />
+      <Field name="Created At" value={props.created_at} />
+      <Field name="Updated At" value={props.updated_at} />
     </div>
   );
+}
+
+function Field (props) {
+  return (
+    <p>
+      <strong>{props.name}:</strong> <em>{props.value}</em>
+    </p>
+  )
 }
 
 // What is your favourite color?
@@ -38,7 +46,7 @@ function AnswerDetails (props) {
     <div>
       <p>{props.body}</p>
       <p>By {props.author_full_name}</p>
-      <p><strong>Created At:</strong> {props.created_at}</p>
+      <Field name="Created At" value={props.created_at} />
     </div>
     // <div></div>
     // You can't return multiple React elements at once.
