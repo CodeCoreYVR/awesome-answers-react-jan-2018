@@ -33,12 +33,12 @@ function QuestionDetails (props) {
 // Red, blue, green, purple, yellow, magenta, hot-pink, etc.
 
 
-function AnswerDetails () {
+function AnswerDetails (props) {
   return (
     <div>
-      <p>What is this?</p>
-      <p>By Jon Snow</p>
-      <p><strong>Created At:</strong> 2017-01-01</p>
+      <p>{props.body}</p>
+      <p>By {props.author_full_name}</p>
+      <p><strong>Created At:</strong> {props.created_at}</p>
     </div>
     // <div></div>
     // You can't return multiple React elements at once.
@@ -62,7 +62,11 @@ function QuestionShowPage () {
         updated_at={(new Date()).toString()}
       />
       <h3>Answers</h3>
-      <AnswerDetails />
+      <AnswerDetails
+        body="Blue... No, red!"
+        author_full_name="Jimmy"
+        created_at={(new Date()).toString()}
+      />
     </main>
   )
 }
