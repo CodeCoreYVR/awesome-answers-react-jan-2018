@@ -29,6 +29,31 @@ function AnswerDetails () {
       <p>By Jon Snow</p>
       <p><strong>Created At:</strong> 2017-01-01</p>
     </div>
+    // <div></div>
+    // You can't return multiple React elements at once.
+    // If you want to return, they must nested inside
+    // a single React element.
+  )
+}
+
+function QuestionShowPage () {
+  return (
+    <main className="QuestionShowPage">
+      <QuestionDetails />
+      <h3>Answers</h3>
+      <AnswerDetails />
+    </main>
+  )
+}
+
+// When building React applications, we create
+// a root component that is the ancestor to all the
+// components that we create. And, we render that
+// component on the page with `ReactDOM.render()`.
+// For this application, the `App` serves that role.
+function App () {
+  return (
+    <QuestionShowPage />
   )
 }
 
@@ -37,7 +62,7 @@ ReactDOM.render(
   // function calls which return React elements.
   // The JSX below is equivalent to:
   // `React.createElement(QuestionDetails)`
-  <AnswerDetails />,
+  <App />,
   document.getElementById('root')
 );
 registerServiceWorker();
