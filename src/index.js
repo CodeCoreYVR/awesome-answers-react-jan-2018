@@ -7,20 +7,31 @@ import registerServiceWorker from './registerServiceWorker';
 // CapitalizedCamelCase. React interprets lower
 // components as HTML tags and will try to render as such
 // ignoring your component.
-function QuestionDetails () {
+function QuestionDetails (props) {
+  const {author = {}} = props;
+  // To write JavaScript expression inside of JSX,
+  // use {} like the {props.title} below.
+  // The expression must return:
+  // - A string
+  // - Or, a number
+  // - Or, null/undefined
+  // - Or, a React element
+  // - Or, an array of React elements
   return (
     <div>
-      <h2>What is your favourite color?</h2>
-      <p>
-        Red, blue, green, purple, yellow, magenta, hot-pink, etc.
-      </p>
-      <p>By Jon Snow</p>
-      <p><strong>View Count:</strong> 32</p>
-      <p><strong>Created At:</strong> 2017-01-01</p>
-      <p><strong>Updated At:</strong> 2017-01-01</p>
+      <h2>{props.title}</h2>
+      <p>{props.body}</p>
+      <p>By {author.full_name}</p>
+      <p><strong>View Count:</strong> {props.view_count}</p>
+      <p><strong>Created At:</strong> {props.created_at}</p>
+      <p><strong>Updated At:</strong> {props.updated_at}</p>
     </div>
   );
 }
+
+// What is your favourite color?
+// Red, blue, green, purple, yellow, magenta, hot-pink, etc.
+
 
 function AnswerDetails () {
   return (
@@ -37,9 +48,19 @@ function AnswerDetails () {
 }
 
 function QuestionShowPage () {
+  // To pass props to React elements, set them with
+  // "HTML attrbutes" inside JSX. Each attribute will
+  // act as a property of the component's `props` object.
   return (
     <main className="QuestionShowPage">
-      <QuestionDetails />
+      <QuestionDetails
+        title="What is your favourite color?"
+        body="Red, blue, yellow, magenta, hot-pink, etc."
+        author={{full_name: "Jon Snow"}}
+        view_count={123}
+        created_at={(new Date()).toString()}
+        updated_at={(new Date()).toString()}
+      />
       <h3>Answers</h3>
       <AnswerDetails />
     </main>
