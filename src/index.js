@@ -22,12 +22,22 @@ function QuestionDetails () {
   );
 }
 
+function AnswerDetails () {
+  return (
+    <div>
+      <p>What is this?</p>
+      <p>By Jon Snow</p>
+      <p><strong>Created At:</strong> 2017-01-01</p>
+    </div>
+  )
+}
+
 ReactDOM.render(
   // JSX tags are translated into React.createElement()
   // function calls which return React elements.
   // The JSX below is equivalent to:
   // `React.createElement(QuestionDetails)`
-  <QuestionDetails />,
+  <AnswerDetails />,
   document.getElementById('root')
 );
 registerServiceWorker();
