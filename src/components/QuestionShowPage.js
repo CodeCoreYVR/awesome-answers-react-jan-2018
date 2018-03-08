@@ -26,9 +26,31 @@ class QuestionShowPage extends Component {
     this.state = {
       question: questionData
     };
+
+    this.delete = this.delete.bind(this);
+  }
+
+  delete () {
+    this.setState({
+      question: {}
+    });
   }
 
   render () {
+    const {question} = this.state;
+
+    if (!question.id) {
+      return (
+        <main
+          className="QuestionShowPage"
+          style={{
+            margin: '0 1rem'
+          }}
+          >
+          <h2>Question doesn't exist!</h2>
+        </main>
+      )
+    }
     // To pass props to React elements, set them with
     // "HTML attrbutes" inside JSX. Each attribute will
     // act as a property of the component's `props` object.
@@ -41,9 +63,14 @@ class QuestionShowPage extends Component {
           margin: '0 1rem'
         }}
         >
-          <QuestionDetails {...this.state.question} />
+          <QuestionDetails {...question} />
+          <button
+            onClick={this.delete}
+          >
+            Delete
+          </button>
           <h3>Answers</h3>
-          <AnswerList answers={this.state.question.answers} />
+          <AnswerList answers={question.answers} />
         </main>
       )
   }

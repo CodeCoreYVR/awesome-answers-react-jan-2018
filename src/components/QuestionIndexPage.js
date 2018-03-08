@@ -27,7 +27,7 @@ class QuestionIndexPage extends React.Component {
     // console.log(currentTarget.dataset.id)
 
     const {questions} = this.state;
-    const questionId = parseInt(currentTarget.dataset.id);
+    const questionId = parseInt(currentTarget.dataset.id, 10);
     console.log(questionId)
     // To delete a question, will have to update the state
     // to version of the state where that question is no longer
