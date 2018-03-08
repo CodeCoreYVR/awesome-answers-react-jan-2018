@@ -5,7 +5,17 @@ import questionsData from '../questionsData';
 // The React Component parent class is also available
 // as a property of the React default import object.
 class QuestionIndexPage extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      questions: questionsData
+    }
+  }
+
   render () {
+    const { questions } = this.state;
+
     return (
       <main
         className="QuestionIndexPage"
@@ -14,7 +24,7 @@ class QuestionIndexPage extends React.Component {
           <h2>Questions</h2>
           <ul>
             {
-              questionsData.map(
+              questions.map(
                 question => (
                   <li key={question.id}>
                     <a href="">{question.title}</a>
