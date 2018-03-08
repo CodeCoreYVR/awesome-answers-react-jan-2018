@@ -28,12 +28,27 @@ class QuestionShowPage extends Component {
     };
 
     this.delete = this.delete.bind(this);
+    this.deleteAnswer = this.deleteAnswer.bind(this);
   }
 
   delete () {
     this.setState({
       question: {}
     });
+  }
+
+  deleteAnswer (answerId) {
+    const {question} = this.state;
+    const {answers} = question;
+
+    this.setState({
+      question: {
+        ...question,
+        // The order in which properties are spread or added to object
+        // affect priority. Last is more important.
+        answers: answers.filter(answer => answer.id !== answerId)
+      }
+    })
   }
 
   render () {
@@ -46,7 +61,7 @@ class QuestionShowPage extends Component {
           style={{
             margin: '0 1rem'
           }}
-          >
+        >
           <h2>Question doesn't exist!</h2>
         </main>
       )
@@ -70,7 +85,10 @@ class QuestionShowPage extends Component {
             Delete
           </button>
           <h3>Answers</h3>
-          <AnswerList answers={question.answers} />
+          <AnswerList
+            answers={question.answers}
+            onAnswerDeleteClick={this.deleteAnswer}
+          />
         </main>
       )
   }
