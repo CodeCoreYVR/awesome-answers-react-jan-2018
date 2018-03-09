@@ -1,6 +1,7 @@
 import React from 'react';
 import QuestionShowPage from './QuestionShowPage';
 import QuestionIndexPage from './QuestionIndexPage';
+import CurrentDateTime from './CurrentDateTime';
 
 // When building React applications, we create
 // a root component that is the ancestor to all the
@@ -10,6 +11,7 @@ import QuestionIndexPage from './QuestionIndexPage';
 function App () {
   return (
     <div className="App">
+      <CurrentDateTime />
       <QuestionIndexPage />
       <QuestionShowPage />
     </div>
