@@ -1,7 +1,15 @@
 import React from 'react';
+import {
+  // When doing named imports, you can `as` to rename
+  // an import in context of a file. As shown, below:
+  BrowserRouter as Router,
+  Route,
+  Link
+} from "react-router-dom";
+
 import QuestionShowPage from './QuestionShowPage';
 import QuestionIndexPage from './QuestionIndexPage';
-import CurrentDateTime from './CurrentDateTime';
+import NavBar from './NavBar';
 
 // When building React applications, we create
 // a root component that is the ancestor to all the
@@ -10,11 +18,13 @@ import CurrentDateTime from './CurrentDateTime';
 // For this application, the `App` serves that role.
 function App () {
   return (
-    <div className="App">
-      <CurrentDateTime />
-      <QuestionIndexPage />
-      <QuestionShowPage />
-    </div>
+    <Router>
+      <div className="App">
+        <NavBar />
+        <Route exact path="/questions" component={QuestionIndexPage} />
+        <Route path="/questions/id" component={QuestionShowPage} />
+      </div>
+    </Router>
   )
 }
 
