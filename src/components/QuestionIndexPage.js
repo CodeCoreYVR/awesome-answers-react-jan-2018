@@ -1,7 +1,7 @@
 import React from 'react';
 import Field from './Field';
 import QuestionForm from './QuestionForm';
-import questionsData from '../questionsData';
+import { Question } from '../lib/requests';
 
 // The React Component parent class is also available
 // as a property of the React default import object.
@@ -10,7 +10,8 @@ class QuestionIndexPage extends React.Component {
     super(props)
 
     this.state = {
-      questions: questionsData
+      questions: [],
+      loading: true
     }
 
     // When using a method as a callback, we must bind
@@ -22,6 +23,19 @@ class QuestionIndexPage extends React.Component {
     // where `this` is bound permanently.
     this.deleteQuestion = this.deleteQuestion.bind(this);
     this.addQuestion = this.addQuestion.bind(this);
+  }
+
+  componentDidMount () {
+    Question
+      .all()
+      .then(
+        questions => {
+          this.setState({
+            questions: questions,
+            loading: false
+          });
+        }
+      );
   }
 
   deleteQuestion (event) {
@@ -61,7 +75,19 @@ class QuestionIndexPage extends React.Component {
   }
 
   render () {
-    const { questions } = this.state;
+    const { questions, loading } = this.state;
+
+    if (loading) {
+      return (
+        <main
+          className="QuestionIndexPage"
+          style={{margin: '0 1rem'}}
+        >
+          <h2>Questions</h2>
+          <h4>Loading...</h4>
+        </main>
+      )
+    }
 
     return (
       <main
