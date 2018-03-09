@@ -33,8 +33,10 @@ class QuestionShowPage extends Component {
   }
 
   componentDidMount () {
+    const questionId = this.props.match.params.id;
+
     Question
-      .one(186)
+      .one(questionId)
       .then(
         question => {
           this.setState({

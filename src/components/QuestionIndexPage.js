@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Field from './Field';
 import QuestionForm from './QuestionForm';
 import { Question } from '../lib/requests';
@@ -103,7 +104,9 @@ class QuestionIndexPage extends React.Component {
               questions.map(
                 question => (
                   <li key={question.id}>
-                    <a href="">{question.title}</a>
+                    <Link to={`/questions/${question.id}`}>
+                      {question.title}
+                    </Link>
                     <Field name="Author" value={question.author.full_name} />
                     <button
                       data-id={question.id}
