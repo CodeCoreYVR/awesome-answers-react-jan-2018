@@ -10,7 +10,7 @@ import React, { Component } from 'react';
 import QuestionDetails from './QuestionDetails';
 import AnswerDetails from './AnswerDetails';
 import AnswerList from './AnswerList';
-import questionData from '../questionData';
+import { Question } from '../lib/requests';
 
 class QuestionShowPage extends Component {
   constructor (props) {
@@ -24,11 +24,25 @@ class QuestionShowPage extends Component {
     // as setting the `props` on `this`.
 
     this.state = {
-      question: questionData
+      question: {},
+      loading: true
     };
 
     this.delete = this.delete.bind(this);
     this.deleteAnswer = this.deleteAnswer.bind(this);
+  }
+
+  componentDidMount () {
+    Question
+      .one(186)
+      .then(
+        question => {
+          this.setState({
+            question: question,
+            loading: false
+          })
+        }
+      )
   }
 
   delete () {
@@ -52,7 +66,20 @@ class QuestionShowPage extends Component {
   }
 
   render () {
-    const {question} = this.state;
+    const { question, loading } = this.state;
+
+    if (loading) {
+      return (
+        <main
+          className="QuestionShowPage"
+          style={{
+            margin: '0 1rem'
+          }}
+        >
+          <h4>Loading...</h4>
+        </main>
+      );
+    }
 
     if (!question.id) {
       return (
