@@ -4,11 +4,12 @@ import {
   // an import in context of a file. As shown, below:
   BrowserRouter as Router,
   Route,
-  Link
+  Switch
 } from "react-router-dom";
 
 import QuestionShowPage from './QuestionShowPage';
 import QuestionIndexPage from './QuestionIndexPage';
+import QuestionNewPage from './QuestionNewPage';
 import NavBar from './NavBar';
 
 // When building React applications, we create
@@ -21,8 +22,15 @@ function App () {
     <Router>
       <div className="App">
         <NavBar />
-        <Route exact path="/questions" component={QuestionIndexPage} />
-        <Route path="/questions/:id" component={QuestionShowPage} />
+        {/*
+          When wrapping routes inside of a Switch component,
+          only the first Route that matches will be rendered.
+        */}
+        <Switch>
+          <Route exact path="/questions" component={QuestionIndexPage} />
+          <Route path="/questions/new" component={QuestionNewPage} />
+          <Route path="/questions/:id" component={QuestionShowPage} />
+        </Switch>
       </div>
     </Router>
   )

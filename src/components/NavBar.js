@@ -6,6 +6,7 @@ function NavBar (props) {
   return (
     <nav className="NavBar">
       <NavLink exact to="/">Home</NavLink>
+      <NavLink exact to="/questions/new">New Question</NavLink>
       <NavLink exact to="/questions">Questions</NavLink>
       <CurrentDateTime />
     </nav>

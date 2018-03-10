@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Field from './Field';
-import QuestionForm from './QuestionForm';
 import { Question } from '../lib/requests';
 
 // The React Component parent class is also available
@@ -96,9 +95,6 @@ class QuestionIndexPage extends React.Component {
         style={{margin: '0 1rem'}}
         >
           <h2>Questions</h2>
-          <QuestionForm
-            onSubmit={this.addQuestion}
-          />
           <ul>
             {
               questions.map(
