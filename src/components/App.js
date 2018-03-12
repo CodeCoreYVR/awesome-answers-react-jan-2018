@@ -29,6 +29,7 @@ class App extends Component {
     };
 
     this.signIn = this.signIn.bind(this);
+    this.signOut = this.signOut.bind(this);
   }
 
   componentWillMount () {
@@ -46,6 +47,11 @@ class App extends Component {
     }
   }
 
+  signOut () {
+    localStorage.removeItem('jwt');
+    this.setState({user: null});
+  }
+
   isSignedIn () {
     // !! to convert this.state.user into a boolean.
     return !!this.state.user;
@@ -57,7 +63,10 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <NavBar user={user} />
+          <NavBar
+            user={user}
+            onSignOut={this.signOut}
+          />
           {/*
             When wrapping routes inside of a Switch component,
             only the first Route that matches will be rendered.

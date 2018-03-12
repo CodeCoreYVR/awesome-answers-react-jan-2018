@@ -3,7 +3,11 @@ import { NavLink } from 'react-router-dom';
 import CurrentDateTime from './CurrentDateTime';
 
 function NavBar (props) {
-  const { user } = props;
+  const { user, onSignOut = () => {} } = props;
+  const handleSignOut = event => {
+    event.preventDefault();
+    onSignOut();
+  }
 
   return (
     <nav className="NavBar">
@@ -12,7 +16,9 @@ function NavBar (props) {
       <NavLink exact to="/questions">Questions</NavLink>
       {
         user ? (
-          <span>Hello, {user.full_name}</span>
+          [ <span key="1">Hello, {user.full_name}</span>
+          , <a key="2" href="/sign_out" onClick={handleSignOut}>Sign Out</a>
+          ]
         ) : (
           <NavLink exact to="/sign_in">Sign In</NavLink>
         )
