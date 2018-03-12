@@ -8,7 +8,6 @@ import React, { Component } from 'react';
 // the React library.
 
 import QuestionDetails from './QuestionDetails';
-import AnswerDetails from './AnswerDetails';
 import AnswerList from './AnswerList';
 import { Question } from '../lib/requests';
 

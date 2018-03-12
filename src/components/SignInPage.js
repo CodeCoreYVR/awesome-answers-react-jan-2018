@@ -11,6 +11,7 @@ class SignInPage extends Component {
   createToken (event) {
     event.preventDefault();
 
+    const { onSignIn = () => {} } = this.props;
     const formData = new FormData(event.currentTarget);
 
     Token
@@ -21,6 +22,7 @@ class SignInPage extends Component {
       .then(data => {
         if (!data.error) {
           localStorage.setItem('jwt', data.jwt);
+          onSignIn()
           // .history is only available on props
           // because this component is rendered by a
           // route component.
