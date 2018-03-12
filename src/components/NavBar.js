@@ -8,6 +8,7 @@ function NavBar (props) {
       <NavLink exact to="/">Home</NavLink>
       <NavLink exact to="/questions/new">New Question</NavLink>
       <NavLink exact to="/questions">Questions</NavLink>
+      <NavLink exact to="/sign_in">Sign In</NavLink>
       <CurrentDateTime />
     </nav>
   )

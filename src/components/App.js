@@ -10,6 +10,7 @@ import {
 import QuestionShowPage from './QuestionShowPage';
 import QuestionIndexPage from './QuestionIndexPage';
 import QuestionNewPage from './QuestionNewPage';
+import SignInPage from './SignInPage';
 import NavBar from './NavBar';
 
 // When building React applications, we create
@@ -30,6 +31,7 @@ function App () {
           <Route exact path="/questions" component={QuestionIndexPage} />
           <Route path="/questions/new" component={QuestionNewPage} />
           <Route path="/questions/:id" component={QuestionShowPage} />
+          <Route path="/sign_in" component={SignInPage} />
         </Switch>
       </div>
     </Router>
