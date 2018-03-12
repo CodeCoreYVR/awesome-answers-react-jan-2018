@@ -1,7 +1,10 @@
 const DOMAIN = 'localhost:3000';
 const API_PREFIX = '/api/v1';
 const BASE_URL = `http://${DOMAIN}${API_PREFIX}`;
-const JWT = 'eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MjMsImZpcnN0X25hbWUiOiJKb24iLCJsYXN0X25hbWUiOiJTbm93IiwiZnVsbF9uYW1lIjoiSm9uIFNub3cifQ.wiMp0k9iaILq6aMVxOVc-X218ZPTW4keo2MWIkkTukQ';
+
+function getJWT () {
+  return localStorage.getItem('jwt');
+}
 
 // HTTP REQUESTS
 
@@ -11,7 +14,7 @@ const Question = {
       `${BASE_URL}/questions`,
       {
         headers: {
-          'Authorization': JWT
+          'Authorization': getJWT()
         }
       }
     )
@@ -22,7 +25,7 @@ const Question = {
       `${BASE_URL}/questions/${id}`,
       {
         headers: {
-          'Authorization': JWT
+          'Authorization': getJWT()
         }
       }
     )
@@ -33,7 +36,7 @@ const Question = {
       `${BASE_URL}/questions`,
       {
         headers: {
-          'Authorization': JWT,
+          'Authorization': getJWT(),
           'Content-Type':'application/json'
         },
         method: 'POST',
