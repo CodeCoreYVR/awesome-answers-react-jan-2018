@@ -1,8 +1,9 @@
 import React from 'react'
+import FormErrors from './FormErrors';
 
 function QuestionForm (props) {
   // props.onSubmit
-  const {onSubmit = () => {}} = props
+  const { errors = [], onSubmit = () => {} } = props
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -26,11 +27,13 @@ function QuestionForm (props) {
       <div>
         <label htmlFor="title">Title</label> <br />
         <input name="title" id="title" />
+        <FormErrors forField="title" errors={errors} />
       </div>
 
       <div>
         <label htmlFor="body">Body</label> <br />
         <textarea name="body" id="body" cols="60" rows="4" />
+        <FormErrors forField="body" errors={errors} />
       </div>
 
       <div>
