@@ -12,6 +12,8 @@ import QuestionShowPage from './QuestionShowPage';
 import QuestionIndexPage from './QuestionIndexPage';
 import QuestionNewPage from './QuestionNewPage';
 import SignInPage from './SignInPage';
+import NotFoundPage from './NotFoundPage';
+import HomePage from './HomePage';
 import NavBar from './NavBar';
 import AuthRoute from './AuthRoute';
 
@@ -72,6 +74,7 @@ class App extends Component {
             only the first Route that matches will be rendered.
           */}
           <Switch>
+            <Route exact path="/" component={HomePage} />
             <AuthRoute
               isAuthenticated={this.isSignedIn()}
               exact
@@ -99,6 +102,12 @@ class App extends Component {
                 )
               }
             />
+            {/*
+              To match all routes that aren't matched in a Switch
+              component, create a Route without a path prop. It's a
+              good way to implement a 404 not found page.
+             */}
+            <Route component={NotFoundPage} />
           </Switch>
         </div>
       </Router>
